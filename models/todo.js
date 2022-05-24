@@ -1,6 +1,4 @@
-const member = require('./user.js');
-
-module.exports = (sequelize, DataTypes) =>{
+export async function createTodo(sequelize, DataTypes){
   const newTodo = sequelize.define("new_todo", {
     content: {
       type: DataTypes.STRING(20),
