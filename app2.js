@@ -40,6 +40,22 @@ app.post('/members', (req, res)=>{
   })
 })
 
+app.get('/todos', (req, res)=>{
+  res.sendFile(__dirname + '/todo.html');
+});
+
+app.post('/todos/:id', (req, res)=>{
+  let body = req.body;
+  let id = req.params;
+
+  models.newTodo.create({
+    content: req.content,
+    
+  }).then((result)=>{
+    console.log('todo create!!');
+    res.redirect('/members');
+  })
+})
 
 app.listen(app.get('port'), ()=>{
   console.log(app.get('port'), 'port server running..');

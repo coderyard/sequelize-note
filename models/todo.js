@@ -1,11 +1,12 @@
 export async function createTodo(sequelize, DataTypes){
-  const newTodo = sequelize.define("new_todo", {
+  const newTodo = await sequelize.define("new_todo", {
     content: {
       type: DataTypes.STRING(20),
       allowNull: false
     },
     isComplete: {
       type: DataTypes.BOOLEAN,
+      defaultValue: false,
       allowNull: true
     },
     createdAt: {

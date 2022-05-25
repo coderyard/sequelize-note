@@ -1,5 +1,5 @@
 export async function createMember(sequelize, DataTypes){
-  const newMember = sequelize.define("new_member", {
+  const newMember = await sequelize.define("new_member", {
     // id: { // id는 이렇게 구현하는게 맞는건가..?
     //   type: DataTypes.LONG,
     //   defaultValue: sequelize.literal('AUTO_INCREMENT')
