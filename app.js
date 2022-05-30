@@ -1,5 +1,4 @@
-const {Sequelize} = require('sequelize');
-const { sequelize } = require('./models');
+const {sequelize} = require('./models/index.js');
 
 const driver = () => {
   sequelize.sync().then(()=>{

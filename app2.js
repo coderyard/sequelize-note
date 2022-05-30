@@ -11,14 +11,16 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.get('/', (req, res, next)=>{
-  models.newMember.findAll()
-    .then((mem)=>{
-      res.send(mem);
-    })
-    .catch(err=>{
-      console.log(err);
-      next(err);
-    });
+  // models.newMember.findAll()
+  //   .then((mem)=>{
+  //     res.send(mem);
+  //   })
+  //   .catch(err=>{
+  //     console.log(err);
+  //     next(err);
+  //   });
+
+  res.sendFile(__dirname + '/index.html');
 });
 
 app.get('/members', (req, res)=>{
@@ -41,19 +43,19 @@ app.post('/members', (req, res)=>{
 })
 
 app.get('/todos', (req, res)=>{
-  res.sendFile(__dirname + '/todo.html');
+  res.sendFile(__dirname + '/todos.html');
 });
 
 app.post('/todos/:id', (req, res)=>{
   let body = req.body;
-  let id = req.params;
+  let id = req.params.id;
 
   models.newTodo.create({
-    content: req.content,
+    content: body,
     
   }).then((result)=>{
     console.log('todo create!!');
-    res.redirect('/members');
+    res.redirect('/todos');
   })
 })
 

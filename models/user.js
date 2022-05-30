@@ -1,5 +1,5 @@
-export async function createMember(sequelize, DataTypes){
-  const newMember = await sequelize.define("new_member", {
+module.exports = (sequelize, DataTypes) => {
+  const newMember = sequelize.define("new_member", {
     // id: { // id는 이렇게 구현하는게 맞는건가..?
     //   type: DataTypes.LONG,
     //   defaultValue: sequelize.literal('AUTO_INCREMENT')
@@ -28,6 +28,12 @@ export async function createMember(sequelize, DataTypes){
       allowNull: false
     },
   });
+  // newMember.associate = function(models){
+  //   models.User.hasMany(models.Todo, {
+  //     foreignKey : 'id',
+  //     onDelete: 'cascade'
+  //   });
+  // }
 
   return newMember;
 }

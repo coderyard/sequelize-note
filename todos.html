@@ -3,20 +3,14 @@
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <title>sign up</title>
+    <title>create todo</title>
   </head>
   <body>
     <h1>정보를 입력하시오.</h1>
-    <form action="/members" method="POST">
+    <form action="/todos" method="POST">
       <table>
         <tr>
-          <td><input type="text" name="email" placeholder="email : "></td>
-        </tr>
-        <tr>
-          <td><input type="text" name="age" placeholder="age : "></td>
-        </tr>
-        <tr>
-          <td><input type="text" name="name" placeholder="name : "></td>
+          <td><input type="text" name="content" placeholder="entered content"></td>
         </tr>
       </table>
       <input type="submit" value="send"/>

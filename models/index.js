@@ -1,13 +1,8 @@
-'use strict';
-
-import Config from '../config/config.json';
-import Sequelize from 'sequelize';
-import user from '../models/user.js';
-import todo from '../models/todo.js';
-
+const Sequelize = require('sequelize');
+// json을 import하려면 어떻게 해야하는걸까..?
 
 const env = process.env.NODE_ENV || 'development';
-const config = Config[env]; // 이런식의 구문은 어떻게 모듈 타입으로 작성하지...?
+const config = require('../config/config.json')[env];
 const db = {};
 
 let sequelize;
@@ -20,8 +15,8 @@ if (config.use_env_variable) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-db.newMember = user(sequelize, Sequelize);
-db.newTodo = todo(sequelize, Sequelize);
+db.newMember = require('./user.js')(sequelize, Sequelize);
+db.newTodo = require('./todo.js')(sequelize, Sequelize);
 
 db.newMember.hasMany(db.newTodo, {
   foreignKey: 'id',
